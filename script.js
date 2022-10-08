@@ -31,7 +31,7 @@ function initialize(size) {
   }
   if (isNaN(size)) {
     size = prompt("How big should the board be?");
-    if (size === null || isNaN(size)) size = 16;
+    if (size === null || isNaN(size) || size > 100) size = 16;
   }
 
   let boardPixels = board.offsetWidth;
