@@ -1,8 +1,8 @@
-const container = document.querySelector(".container");
+const board = document.querySelector("#board");
 
 const square = document.createElement("div");
 square.classList.add("square");
-let boardPixels = container.offsetWidth;
+let boardPixels = board.offsetWidth;
 
 function createRow(size) {
   const row = document.createElement("div");
@@ -28,7 +28,7 @@ function changeColor(e) {
 
 function initialize(size) {
   const grid = createGrid(size);
-  container.append(grid);
+  board.append(grid);
   const squares = document.querySelectorAll(".row .square");
   squares.forEach((sq) => {
     sq.addEventListener("mouseover", changeColor);
@@ -36,7 +36,7 @@ function initialize(size) {
   squares.forEach((sq) => {
     sq.style.width = `${boardPixels / size}px`;
     sq.style.height = `${boardPixels / size}px`;
-  })
+  });
 }
 
 initialize(64);

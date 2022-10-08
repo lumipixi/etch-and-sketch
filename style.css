@@ -11,9 +11,12 @@ body {
   background-color: midnightblue;
 }
 
-.container {
-  /* display: flex;
-  flex-flow: column; */
+#container {
+  display: flex;
+}
+
+#board {
+  margin: auto;
   width: 720px;
 }
 
