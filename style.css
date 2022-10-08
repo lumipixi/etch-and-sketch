@@ -1,0 +1,30 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: midnightblue;
+}
+
+.container {
+  /* display: flex;
+  flex-flow: column; */
+  width: 720px;
+}
+
+.row {
+  display: flex;
+  /* flex-wrap: wrap; */
+  height: stretch;
+}
+
+.square {
+  width: 100%;
+  background-color: lightgray;
+  border: 1px solid gray;
+}
