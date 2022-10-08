@@ -3,6 +3,8 @@ const board = document.querySelector("#board");
 const square = document.createElement("div");
 square.classList.add("square");
 
+let currentColor = "lightpink";
+
 function createRow(size) {
   const row = document.createElement("div");
   row.classList.add("row");
@@ -21,20 +23,17 @@ function createGrid(size) {
   return grid;
 }
 
-function changeColor(e) {
-  e.target.style.backgroundColor = "lightpink";
-}
-
 function initialize(size) {
   if (!!board) {
     while (board.lastChild) {
-      board.removeChild(board.lastChild)
-    }; 
+      board.removeChild(board.lastChild);
+    }
   }
   if (isNaN(size)) {
-    size = prompt("How big should the board be?")
-    if (size === null) size = 16;
+    size = prompt("How big should the board be?");
+    if (size === null || isNaN(size)) size = 16;
   }
+
   let boardPixels = board.offsetWidth;
 
   const grid = createGrid(size);
@@ -47,9 +46,35 @@ function initialize(size) {
   });
 }
 
-const sizePickers = document.querySelectorAll(".sizePicker");
+const sizePickers = document.querySelectorAll(".size-picker");
 sizePickers.forEach((btn) => {
-  btn.addEventListener("click", () => initialize(btn.getAttribute("data-size")));
-})
+  btn.addEventListener("click", () =>
+    initialize(btn.getAttribute("data-size"))
+  );
+});
 
-initialize(16)
+const colorPickers = document.querySelectorAll(".color-picker");
+colorPickers.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentColor = btn.getAttribute("data-color");
+    console.log("Current color is: " + currentColor);
+  });
+});
+
+function changeColor(e) {
+  switch (currentColor) {
+    case "lightpink":
+      e.target.style.backgroundColor = currentColor;
+      break;
+    case "black":
+      e.target.style.backgroundColor = currentColor;
+      break;
+    case "rainbow":
+      let randomColor = () => Math.floor(Math.random() * 360);
+      // e.target.style.backgroundColor = `hsl(${randomColor()}, 100%, 50%)`;
+      e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+      break;
+  }
+}
+
+initialize(16);
