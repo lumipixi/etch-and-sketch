@@ -8,17 +8,28 @@ html {
 }
 
 body {
-  background-color: midnightblue;
+  background-color: #0c0213;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#titleBar {
+  padding-left: 2em;
 }
 
 #container {
   display: flex;
+  margin-top: 2em;
+  justify-content: center;
+  column-gap: 3em;
+  margin-inline: 4em;
 }
 
 #board {
-  min-width: 640px;
-  max-width: 960px;
-  flex-grow: 0;
+  min-width: 480px;
+  max-width: 720px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .row {
@@ -30,4 +41,33 @@ body {
 .square {
   background-color: lightgray;
   border: 1px solid gray;
+}
+
+#sizeBar,
+#colorBar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5em;
+}
+
+ #container button {
+  background-color: #143346;
+  color: white;
+  border: 4px solid #c3f45000;
+  border-left: 4px solid #c4f450;
+  font-size: 1.5em;
+  padding: 0.75em;
+}
+
+#container button:hover {
+  border-color: #c4f450;
+}
+
+#container button:active {
+  background-color: #93ba2b;
+  color: black;
+}
+
+.selected {
+  font-size: 5em;
 }

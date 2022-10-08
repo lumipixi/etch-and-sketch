@@ -77,4 +77,13 @@ function changeColor(e) {
   }
 }
 
+function clearButtons() {
+  allButtons.forEach((btn) => {
+    btn.style.backgroundColor = "#143346";
+    btn.style.color = "#143346";
+  });
+}
+
+const allButtons = document.querySelectorAll("button");
+
 initialize(16);
