@@ -22,16 +22,16 @@ function createGrid(size) {
   return grid;
 }
 
-function test() {
-  console.log("u clicked me");
+function changeColor(e) {
+  e.target.style.backgroundColor = "lightpink";
 }
 
 function initialize(size) {
   const grid = createGrid(size);
   container.append(grid);
-  const squares = document.querySelectorAll(".grid .square");
+  const squares = document.querySelectorAll(".row .square");
   squares.forEach((sq) => {
-    sq.addEventListener("click", test);
+    sq.addEventListener("mouseover", changeColor);
   });
   squares.forEach((sq) => {
     sq.style.width = `${boardPixels / size}px`;
@@ -39,4 +39,4 @@ function initialize(size) {
   })
 }
 
-initialize(32);
+initialize(64);
