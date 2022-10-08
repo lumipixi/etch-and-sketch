@@ -16,8 +16,9 @@ body {
 }
 
 #board {
-  margin: auto;
-  width: 720px;
+  min-width: 640px;
+  max-width: 960px;
+  flex-grow: 0;
 }
 
 .row {

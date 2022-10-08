@@ -2,7 +2,6 @@ const board = document.querySelector("#board");
 
 const square = document.createElement("div");
 square.classList.add("square");
-let boardPixels = board.offsetWidth;
 
 function createRow(size) {
   const row = document.createElement("div");
@@ -27,16 +26,30 @@ function changeColor(e) {
 }
 
 function initialize(size) {
+  if (!!board) {
+    while (board.lastChild) {
+      board.removeChild(board.lastChild)
+    }; 
+  }
+  if (isNaN(size)) {
+    size = prompt("How big should the board be?")
+    if (size === null) size = 16;
+  }
+  let boardPixels = board.offsetWidth;
+
   const grid = createGrid(size);
   board.append(grid);
   const squares = document.querySelectorAll(".row .square");
   squares.forEach((sq) => {
     sq.addEventListener("mouseover", changeColor);
-  });
-  squares.forEach((sq) => {
     sq.style.width = `${boardPixels / size}px`;
     sq.style.height = `${boardPixels / size}px`;
   });
 }
 
-initialize(64);
+const sizePickers = document.querySelectorAll(".sizePicker");
+sizePickers.forEach((btn) => {
+  btn.addEventListener("click", () => initialize(btn.getAttribute("data-size")));
+})
+
+initialize(16)
